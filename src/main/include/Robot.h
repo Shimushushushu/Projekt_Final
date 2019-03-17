@@ -9,33 +9,32 @@
 
 #include <frc/TimedRobot.h>
 #include <frc/commands/Command.h>
-#include <frc/smartdashboard/SendableChooser.h>
+#include <frc/commands/Scheduler.h>
+#include <frc/livewindow/LiveWindow.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include "OI.h"
-#include "commands/ExampleCommand.h"
-#include "commands/MyAutoCommand.h"
+#include "subsystems/OmniDrive_1plus6.h"
 #include "subsystems/ExampleSubsystem.h"
 
 class Robot : public frc::TimedRobot {
 	public:
-	static ExampleSubsystem m_subsystem;
-	static OI m_oi;
+		static OmniDrive_1plus6 OmniDrive_1plus6;
+		static ExampleSubsystem m_subsystem;
 
-	void RobotInit() override;
-	void RobotPeriodic() override;
-	void DisabledInit() override;
-	void DisabledPeriodic() override;
-	void AutonomousInit() override;
-	void AutonomousPeriodic() override;
-	void TeleopInit() override;
-	void TeleopPeriodic() override;
-	void TestPeriodic() override;
+ 	private:
+		frc::LiveWindow& m_lw = *frc::LiveWindow::GetInstance();
 
- private:
-	// Have it null by default so that if testing teleop it
-	// doesn't have undefined behavior and potentially crash.
-	frc::Command* m_autonomousCommand = nullptr;
-	ExampleCommand m_defaultAuto;
-	MyAutoCommand m_myAuto;
-	frc::SendableChooser<frc::Command*> m_chooser;
+		void RobotInit() override;
+		void RobotPeriodic() override;
+		void DisabledInit() override;
+		void DisabledPeriodic() override;
+		void AutonomousInit() override;
+		void AutonomousPeriodic() override;
+		void TeleopInit() override;
+		void TeleopPeriodic() override;
+		void TestPeriodic() override;
+
+		frc::Command* m_autonomousCommand = nullptr;
+		frc::SendableChooser<frc::Command*> m_chooser;
 };

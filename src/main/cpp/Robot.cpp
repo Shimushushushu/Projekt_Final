@@ -10,6 +10,7 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
+OmniDrive_1plus6 Robot::OmniDrive_1plus6;
 ExampleSubsystem Robot::m_subsystem;
 OI Robot::m_oi;
 
@@ -17,6 +18,7 @@ void Robot::RobotInit() {
 	m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
 	m_chooser.AddOption("My Auto", &m_myAuto);
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+	frc::SmartDashboard::PutData(&OmniDrive_1plus6);
 }
 
 /**
@@ -76,6 +78,7 @@ void Robot::TeleopInit() {
 		m_autonomousCommand->Cancel();
 		m_autonomousCommand = nullptr;
 	}
+	std::cout << "Starting Teleop" << std::endl;
 }
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
