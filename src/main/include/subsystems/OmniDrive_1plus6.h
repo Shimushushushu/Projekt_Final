@@ -11,7 +11,7 @@
 #include <frc/Joystick.h>
 #include <frc/commands/Subsystem.h>
 #include <WPI_TalonSRX.h>
-#include <DifferentialDrive_Kai.h>
+#include "priavatelib/DifferentialDrive_Kai.h"
 
 class OmniDrive_1plus6 : public frc::Subsystem {
 	private:

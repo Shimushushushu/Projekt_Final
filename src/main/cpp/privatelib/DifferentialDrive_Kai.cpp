@@ -5,20 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "DifferentialDrive_Kai.h"
+#include "privatelib/DifferentialDrive_Kai.h"
 
 #include <algorithm>
 #include <cmath>
 
 #include <hal/HAL.h>
 
-#include "frc/SpeedController.h"
-#include "frc/smartdashboard/SendableBuilder.h"
+#include <frc/SpeedController.h>
+#include <frc/smartdashboard/SendableBuilder.h>
 
 using namespace frc;
 
 DifferentialDrive_Kai::DifferentialDrive_Kai(SpeedController& leftMotor, SpeedController& rightMotor,
-									 SpeedController& frontMotor, SpeedController& rearMotor)
+											 SpeedController& frontMotor, SpeedController& rearMotor)
 	: m_leftMotor(leftMotor), m_rightMotor(rightMotor), m_frontMotor(frontMotor), m_rearMotor(rearMotor) {
 	AddChild(&m_leftMotor);
 	AddChild(&m_rightMotor);
@@ -65,29 +65,15 @@ void DifferentialDrive_Kai::ArcadeDrive_Kai(double xSpeed, double ySpeed, double
 	double maxInputy =
 		std::copysign(std::max(std::abs(ySpeed), std::abs(zRotation)), ySpeed);
 
-	if (xSpeed >= 0.0) {
-		// First quadrant, else second quadrant
-		if (zRotation >= 0.0) {
+	if (zRotation >= 0.0) {
+		if (xSpeed >= 0.0) {
 			leftMotorOutput = maxInputx;
 			rightMotorOutput = xSpeed - zRotation;
 		} else {
 			leftMotorOutput = xSpeed + zRotation;
 			rightMotorOutput = maxInputx;
 		}
-	} else {
-		// Third quadrant, else fourth quadrant
-		if (zRotation >= 0.0) {
-			leftMotorOutput = xSpeed + zRotation;
-			rightMotorOutput = maxInputx;
-		} else {
-			leftMotorOutput = maxInputx;
-			rightMotorOutput = xSpeed - zRotation;
-		}
-	}
-	
-	if (ySpeed >= 0.0) {
-		// First quadrant, else second quadrant
-		if (zRotation >= 0.0) {
+		if (ySpeed >= 0.0) {
 			frontMotorOutput = maxInputy;
 			rearMotorOutput = ySpeed - zRotation;
 		} else {
@@ -95,8 +81,14 @@ void DifferentialDrive_Kai::ArcadeDrive_Kai(double xSpeed, double ySpeed, double
 			rearMotorOutput = maxInputy;
 		}
 	} else {
-		// Third quadrant, else fourth quadrant
-		if (zRotation >= 0.0) {
+		if (xSpeed >= 0.0) {
+			leftMotorOutput = xSpeed + zRotation;
+			rightMotorOutput = maxInputx;
+		} else {
+			leftMotorOutput = maxInputx;
+			rightMotorOutput = xSpeed - zRotation;
+		}
+		if (ySpeed >= 0.0) {
 			frontMotorOutput = ySpeed + zRotation;
 			rearMotorOutput = maxInputy;
 		} else {
