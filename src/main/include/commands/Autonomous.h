@@ -7,14 +7,11 @@
 
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc/commands/CommandGroup.h>
 
-class ExampleCommand : public frc::Command {
+#include "commands/ArcadeDriveWithDualJoystick.h"
+
+class Autonomous : public frc::CommandGroup {
 	public:
-		ExampleCommand();
-		void Initialize() override;
-		void Execute() override;
-		bool IsFinished() override;
-		void End() override;
-		void Interrupted() override;
+		Autonomous();
 };

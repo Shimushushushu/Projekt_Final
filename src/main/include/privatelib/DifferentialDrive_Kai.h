@@ -12,6 +12,7 @@
 #include <wpi/raw_ostream.h>
 
 #include <frc/drive/RobotDriveBase.h>
+#include <ctre/Phoenix.h>
 
 namespace frc {
 

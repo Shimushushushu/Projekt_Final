@@ -10,27 +10,27 @@
 #include <frc/Encoder.h>
 #include <frc/Joystick.h>
 #include <frc/commands/Subsystem.h>
-#include <WPI_TalonSRX.h>
-#include "priavatelib/DifferentialDrive_Kai.h"
+#include <frc/SpeedControllerGroup.h>
+#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
+#include <ctre/Phoenix.h>
+#include <frc/WPILib.h>
+#include "privatelib/DifferentialDrive_Kai.h"
 
 class OmniDrive_1plus6 : public frc::Subsystem {
 	private:
-		frc::TalonSRX m_frontLeft{1};
-		frc::TalonSRX m_rearLeft{2};
-		frc::SpeedControllerGroup m_left{m_frontLeft, m_rearLeft};
+		WPI_TalonSRX * m_frontLeft = new WPI_TalonSRX(1);
+		WPI_TalonSRX * m_rearLeft = new WPI_TalonSRX(2);
 
-		frc::TalonSRX m_frontRight{3};
-		frc::TalonSRX m_rearRight{4};
-		frc::SpeedControllerGroup m_right{m_frontRight, m_rearRight};
+		WPI_TalonSRX * m_frontRight = new WPI_TalonSRX(3);
+		WPI_TalonSRX * m_rearRight = new WPI_TalonSRX(4);
+		
+		WPI_TalonSRX * m_front = new WPI_TalonSRX(5);
+		WPI_TalonSRX * m_rear = new WPI_TalonSRX(6);
 
-		frc::TalonSRX m_front{5};
-		frc::TalonSRX m_rear{6};
-
-		frc::DifferentialDrive_Kai m_robotDrive{m_left, m_right, m_front, m_rear};
+		frc::DifferentialDrive_Kai * m_robotDrive = new frc::DifferentialDrive_Kai(*m_frontLeft, *m_frontRight, *m_front, *m_rear);
 
 		frc::Encoder m_leftEncoder{1, 2};
 		frc::Encoder m_rightEncoder{3, 4};
-
 
 		// It's desirable that everything possible under private except
 		// for methods that implement subsystem capabilities
@@ -40,4 +40,5 @@ class OmniDrive_1plus6 : public frc::Subsystem {
 		void InitDefaultCommand() override;
 		void Log();
 		void Drive(double x, double y, double z);
+		void TalonInit();
 };

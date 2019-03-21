@@ -5,27 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/ExampleCommand.h"
+#include "commands/ArcadeDriveWithDualJoystick.h"
+#include "privatelib/DualXtremeControl.h"
 
 #include "Robot.h"
 
-ExampleCommand::ExampleCommand() {
-	// Use Requires() here to declare subsystem dependencies
-	Requires(&Robot::m_subsystem);
+ArcadeDriveWithDualJoystick::ArcadeDriveWithDualJoystick()
+		: frc::Command("ArcadeDriveWithDualJoystick") {
+	Requires(&Robot::omnidrive_1plus6);
 }
 
-// Called just before this Command runs the first time
-void ExampleCommand::Initialize() {}
-
 // Called repeatedly when this Command is scheduled to run
-void ExampleCommand::Execute() {}
+void ArcadeDriveWithDualJoystick::Execute() {
+	auto& XL = Robot::oi.GetL();
+	auto& XR = Robot::oi.GetR();
+	Robot::omnidrive_1plus6.Drive(-xCombine(XL.GetX(), XR.GetX()), yCombine(XL.GetY(), XR.GetY()), zCombine(XL.GetX(), XR.GetX()));
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool ExampleCommand::IsFinished() { return false; }
+bool ArcadeDriveWithDualJoystick::IsFinished() { return false; }
 
 // Called once after isFinished returns true
-void ExampleCommand::End() {}
-
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-void ExampleCommand::Interrupted() {}
+void ArcadeDriveWithDualJoystick::End() { Robot::omnidrive_1plus6.Drive(0, 0, 0); }

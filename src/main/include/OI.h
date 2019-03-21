@@ -7,7 +7,20 @@
 
 #pragma once
 
+#include <frc/Joystick.h>
+#include <frc/buttons/JoystickButton.h>
+
 class OI {
 	public:
-	OI();
+		OI();
+		frc::Joystick& GetL();
+		frc::Joystick& GetR();
+		frc::Joystick& GetX();
+	
+	private:
+		frc::Joystick m_Xtreme_L{0};
+		frc::Joystick m_Xtreme_R{1};
+		frc::Joystick m_Xbox{2};
+
+  		frc::JoystickButton m_example{&m_Xbox, 1};
 };

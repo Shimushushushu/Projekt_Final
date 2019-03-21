@@ -13,6 +13,10 @@
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
   "files.associations": {
-    "*.inc": "cpp"
+    "*.inc": "cpp",
+    "*.tcc": "cpp",
+    "limits": "cpp",
+    "memory": "cpp",
+    "type_traits": "cpp"
   }
 }

@@ -7,18 +7,13 @@
 
 #include "Robot.h"
 
-#include <frc/commands/Scheduler.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-
-OmniDrive_1plus6 Robot::OmniDrive_1plus6;
-ExampleSubsystem Robot::m_subsystem;
-OI Robot::m_oi;
+OmniDrive_1plus6 Robot::omnidrive_1plus6;
+OI Robot::oi;
 
 void Robot::RobotInit() {
-	m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-	m_chooser.AddOption("My Auto", &m_myAuto);
-	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-	frc::SmartDashboard::PutData(&OmniDrive_1plus6);
+	Robot::omnidrive_1plus6.TalonInit();
+
+	frc::SmartDashboard::PutData(&omnidrive_1plus6);
 }
 
 /**
@@ -52,19 +47,8 @@ void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
  * the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit() {
-	// std::string autoSelected = frc::SmartDashboard::GetString(
-	//     "Auto Selector", "Default");
-	// if (autoSelected == "My Auto") {
-	//   m_autonomousCommand = &m_myAuto;
-	// } else {
-	//   m_autonomousCommand = &m_defaultAuto;
-	// }
-
-	m_autonomousCommand = m_chooser.GetSelected();
-
-	if (m_autonomousCommand != nullptr) {
-		m_autonomousCommand->Start();
-	}
+	m_autonomousCommand.Start();
+	std::cout << "Starting Auto" << std::endl;
 }
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
@@ -74,10 +58,7 @@ void Robot::TeleopInit() {
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
-	if (m_autonomousCommand != nullptr) {
-		m_autonomousCommand->Cancel();
-		m_autonomousCommand = nullptr;
-	}
+	m_autonomousCommand.Cancel();
 	std::cout << "Starting Teleop" << std::endl;
 }
 

@@ -7,22 +7,26 @@
 
 #pragma once
 
+#include <iostream>
+
 #include <frc/TimedRobot.h>
 #include <frc/commands/Command.h>
 #include <frc/commands/Scheduler.h>
 #include <frc/livewindow/LiveWindow.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/smartdashboard/SendableChooser.h>
 
 #include "OI.h"
+#include "commands/Autonomous.h"
 #include "subsystems/OmniDrive_1plus6.h"
-#include "subsystems/ExampleSubsystem.h"
 
 class Robot : public frc::TimedRobot {
 	public:
-		static OmniDrive_1plus6 OmniDrive_1plus6;
-		static ExampleSubsystem m_subsystem;
+		static OmniDrive_1plus6 omnidrive_1plus6;
+		static OI oi;
 
  	private:
+		Autonomous m_autonomousCommand;
 		frc::LiveWindow& m_lw = *frc::LiveWindow::GetInstance();
 
 		void RobotInit() override;
@@ -34,7 +38,4 @@ class Robot : public frc::TimedRobot {
 		void TeleopInit() override;
 		void TeleopPeriodic() override;
 		void TestPeriodic() override;
-
-		frc::Command* m_autonomousCommand = nullptr;
-		frc::SendableChooser<frc::Command*> m_chooser;
 };

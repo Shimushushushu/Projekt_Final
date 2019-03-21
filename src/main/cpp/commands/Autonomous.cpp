@@ -5,14 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "commands/Autonomous.h"
 
-#include <frc/commands/Command.h>
-
-class ArcadeDriveWithJoystick : public frc::Command {
- public:
-  ArcadeDriveWithJoystick();
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-};
+Autonomous::Autonomous() {
+	AddSequential(new ArcadeDriveWithDualJoystick());
+}

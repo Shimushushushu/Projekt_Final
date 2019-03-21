@@ -10,7 +10,7 @@
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-#include "commands/ArcadeDriveWithJoystick.h"
+#include "commands/ArcadeDriveWithDualJoystick.h"
 
 OmniDrive_1plus6::OmniDrive_1plus6() : Subsystem("OmniDrive_1plus6") {
 	AddChild("Left Encoder", m_leftEncoder);
@@ -18,10 +18,8 @@ OmniDrive_1plus6::OmniDrive_1plus6() : Subsystem("OmniDrive_1plus6") {
 }
 
 void OmniDrive_1plus6::InitDefaultCommand() {
-  SetDefaultCommand(new ArcadeDriveWithJoystick());
+	SetDefaultCommand(new ArcadeDriveWithDualJoystick());
 }
-
-
 
 void OmniDrive_1plus6::Log() {
 	frc::SmartDashboard::PutNumber("Left Distance", m_leftEncoder.GetDistance());
@@ -31,7 +29,29 @@ void OmniDrive_1plus6::Log() {
 }
 
 void OmniDrive_1plus6::Drive(double x, double y, double z) {
-	m_robotDrive.ArcadeDrive_Kai(x, y, z);
+	m_robotDrive->ArcadeDrive_Kai(x, y, z);
+}
+
+void OmniDrive_1plus6::TalonInit() {
+	m_frontLeft->ConfigFactoryDefault();
+	m_rearLeft->ConfigFactoryDefault();
+	m_frontRight->ConfigFactoryDefault();
+	m_rearRight->ConfigFactoryDefault();
+	m_front->ConfigFactoryDefault();
+	m_rear->ConfigFactoryDefault();
+
+	m_rearLeft->Follow(*m_frontLeft);
+	m_rearRight->Follow(*m_frontRight);
+
+	m_frontLeft->SetInverted(false);
+	m_rearLeft->SetInverted(false);
+	m_frontRight->SetInverted(false);
+	m_rearRight->SetInverted(false);
+	m_front->SetInverted(false);
+	m_rear->SetInverted(false);
+
+	m_frontLeft->SetSensorPhase(true);
+	m_frontRight->SetSensorPhase(true);
 }
 
 // Put methods for controlling this subsystem
