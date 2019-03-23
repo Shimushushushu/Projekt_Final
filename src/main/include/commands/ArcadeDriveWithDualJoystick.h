@@ -10,9 +10,9 @@
 #include <frc/commands/Command.h>
 
 class ArcadeDriveWithDualJoystick : public frc::Command {
- public:
-  ArcadeDriveWithDualJoystick();
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
+	public:
+		ArcadeDriveWithDualJoystick();
+		void Execute() override;
+		bool IsFinished() override;
+		void End() override;
 };

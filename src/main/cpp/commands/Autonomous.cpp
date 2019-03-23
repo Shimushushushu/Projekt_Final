@@ -8,5 +8,5 @@
 #include "commands/Autonomous.h"
 
 Autonomous::Autonomous() {
-	AddSequential(new ArcadeDriveWithDualJoystick());
+	AddParallel(new ArcadeDriveWithDualJoystick());
 }

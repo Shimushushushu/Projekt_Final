@@ -5,12 +5,11 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+#include "commands/ArcadeDriveWithDualJoystick.h"
 #include "subsystems/OmniDrive_1plus6.h"
 
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SmartDashboard.h>
-
-#include "commands/ArcadeDriveWithDualJoystick.h"
 
 OmniDrive_1plus6::OmniDrive_1plus6() : Subsystem("OmniDrive_1plus6") {
 	AddChild("Left Encoder", m_leftEncoder);

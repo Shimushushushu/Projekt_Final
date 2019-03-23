@@ -7,18 +7,13 @@
 
 #pragma once
 
-#include <iostream>
-
-#include <frc/TimedRobot.h>
-#include <frc/commands/Command.h>
-#include <frc/commands/Scheduler.h>
-#include <frc/livewindow/LiveWindow.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <frc/smartdashboard/SendableChooser.h>
-
 #include "OI.h"
 #include "commands/Autonomous.h"
 #include "subsystems/OmniDrive_1plus6.h"
+
+#include <frc/TimedRobot.h>
+#include <frc/livewindow/LiveWindow.h>
+
 
 class Robot : public frc::TimedRobot {
 	public:
@@ -28,6 +23,7 @@ class Robot : public frc::TimedRobot {
  	private:
 		Autonomous m_autonomousCommand;
 		frc::LiveWindow& m_lw = *frc::LiveWindow::GetInstance();
+		frc::PowerDistributionPanel m_pdp;
 
 		void RobotInit() override;
 		void RobotPeriodic() override;

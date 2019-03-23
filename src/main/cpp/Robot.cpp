@@ -7,6 +7,12 @@
 
 #include "Robot.h"
 
+#include <iostream>
+
+#include <frc/commands/Command.h>
+#include <frc/commands/Scheduler.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+
 OmniDrive_1plus6 Robot::omnidrive_1plus6;
 OI Robot::oi;
 
@@ -24,7 +30,11 @@ void Robot::RobotInit() {
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-void Robot::RobotPeriodic() {}
+void Robot::RobotPeriodic() {
+	frc::SmartDashboard::PutNumber("Current Channel 0", m_pdp.GetCurrent(0)); //Only for EXAMPLE
+	frc::SmartDashboard::PutNumber("Voltage", m_pdp.GetVoltage());
+    frc::SmartDashboard::PutNumber("Temperature", m_pdp.GetTemperature());
+}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You

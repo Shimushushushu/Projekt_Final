@@ -5,10 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+#include "Robot.h"
 #include "commands/ArcadeDriveWithDualJoystick.h"
 #include "privatelib/DualXtremeControl.h"
-
-#include "Robot.h"
 
 ArcadeDriveWithDualJoystick::ArcadeDriveWithDualJoystick()
 		: frc::Command("ArcadeDriveWithDualJoystick") {

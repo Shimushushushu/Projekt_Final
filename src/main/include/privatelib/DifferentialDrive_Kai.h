@@ -9,10 +9,9 @@
 
 #pragma once
 
-#include <wpi/raw_ostream.h>
-
-#include <frc/drive/RobotDriveBase.h>
 #include <ctre/Phoenix.h>
+#include <frc/drive/RobotDriveBase.h>
+#include <wpi/raw_ostream.h>
 
 namespace frc {
 

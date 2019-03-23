@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "RobotMap.h"
+
 #include <frc/Joystick.h>
 #include <frc/buttons/JoystickButton.h>
 
@@ -18,9 +20,9 @@ class OI {
 		frc::Joystick& GetX();
 	
 	private:
-		frc::Joystick m_Xtreme_L{0};
-		frc::Joystick m_Xtreme_R{1};
-		frc::Joystick m_Xbox{2};
+		frc::Joystick m_Xtreme_L{XtremeL};
+		frc::Joystick m_Xtreme_R{XtremeR};
+		frc::Joystick m_Xbox{Xbox};
 
   		frc::JoystickButton m_example{&m_Xbox, 1};
 };

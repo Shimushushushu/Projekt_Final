@@ -12,10 +12,8 @@
 #include <algorithm>
 #include <cmath>
 
-#include <hal/HAL.h>
-
-#include <frc/SpeedController.h>
 #include <frc/smartdashboard/SendableBuilder.h>
+#include <hal/HAL.h>
 
 using namespace frc;
 
