@@ -26,6 +26,16 @@ constexpr int XtremeL = 1;
 constexpr int XtremeR = 2;
 constexpr int Xbox = 0;
 
+//PDP wiring
+constexpr int CIM_LF = 1;
+constexpr int CIM_LR = 2;
+constexpr int CIM_RF = 3;
+constexpr int CIM_RR = 4;
+constexpr int Pro775_F1 = 5;
+constexpr int Pro775_F2 = 6;
+constexpr int Pro775_R1 = 7;
+constexpr int Pro775_R2 = 8;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking

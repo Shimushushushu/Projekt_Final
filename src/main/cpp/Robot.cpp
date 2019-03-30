@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "RobotMap.h"
 
 #include <iostream>
 
@@ -31,7 +32,9 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-	frc::SmartDashboard::PutNumber("Current Channel 0", m_pdp.GetCurrent(0)); //Only for EXAMPLE
+	frc::SmartDashboard::PutNumber("DriveTrain Currrent",
+									(m_pdp.GetCurrent(CIM_LF) + m_pdp.GetCurrent(CIM_LR) + m_pdp.GetCurrent(CIM_RF) + m_pdp.GetCurrent(CIM_RR) +
+									m_pdp.GetCurrent(Pro775_F1) + m_pdp.GetCurrent(Pro775_F2) + m_pdp.GetCurrent(Pro775_R1) + m_pdp.GetCurrent(Pro775_R2))/8); //Only for EXAMPLE
 	frc::SmartDashboard::PutNumber("Voltage", m_pdp.GetVoltage());
     frc::SmartDashboard::PutNumber("Temperature", m_pdp.GetTemperature());
 }
