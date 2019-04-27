@@ -33,8 +33,8 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
 	frc::SmartDashboard::PutNumber("DriveTrain Currrent",
-									(m_pdp.GetCurrent(CIM_LF) + m_pdp.GetCurrent(CIM_LR) + m_pdp.GetCurrent(CIM_RF) + m_pdp.GetCurrent(CIM_RR) +
-									m_pdp.GetCurrent(Pro775_F1) + m_pdp.GetCurrent(Pro775_F2) + m_pdp.GetCurrent(Pro775_R1) + m_pdp.GetCurrent(Pro775_R2))/8); //Only for EXAMPLE
+									(m_pdp.GetCurrent(Map_PDP_CIM_LF) + m_pdp.GetCurrent(Map_PDP_CIM_LR) + m_pdp.GetCurrent(Map_PDP_CIM_RF) + m_pdp.GetCurrent(Map_PDP_CIM_RR) +
+									m_pdp.GetCurrent(Map_PDP_775_F1) + m_pdp.GetCurrent(Map_PDP_775_F2) + m_pdp.GetCurrent(Map_PDP_775_R1) + m_pdp.GetCurrent(Map_PDP_775_R2))/8); //Only for EXAMPLE
 	frc::SmartDashboard::PutNumber("Voltage", m_pdp.GetVoltage());
     frc::SmartDashboard::PutNumber("Temperature", m_pdp.GetTemperature());
 }

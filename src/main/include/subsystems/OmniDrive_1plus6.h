@@ -18,19 +18,19 @@
 
 class OmniDrive_1plus6 : public frc::Subsystem {
 	private:
-		WPI_TalonSRX * m_frontLeft = new WPI_TalonSRX(frontLeftMap);
-		WPI_TalonSRX * m_rearLeft = new WPI_TalonSRX(rearLeftMap);
+		WPI_TalonSRX * m_frontLeft = new WPI_TalonSRX(Map_CAN_Motor_FL);
+		WPI_TalonSRX * m_rearLeft = new WPI_TalonSRX(Map_CAN_Motor_RL);
 
-		WPI_TalonSRX * m_frontRight = new WPI_TalonSRX(frontRightMap);
-		WPI_TalonSRX * m_rearRight = new WPI_TalonSRX(rearRightMap);
+		WPI_TalonSRX * m_frontRight = new WPI_TalonSRX(Map_CAN_Motor_FR);
+		WPI_TalonSRX * m_rearRight = new WPI_TalonSRX(Map_CAN_Motor_RR);
 		
-		WPI_TalonSRX * m_front = new WPI_TalonSRX(frontMap);
-		WPI_TalonSRX * m_rear = new WPI_TalonSRX(rearMap);
+		WPI_TalonSRX * m_front = new WPI_TalonSRX(Map_CAN_Motor_F);
+		WPI_TalonSRX * m_rear = new WPI_TalonSRX(Map_CAN_Motor_R);
 
 		frc::DifferentialDrive_Kai * m_robotDrive = new frc::DifferentialDrive_Kai(*m_frontLeft, *m_frontRight, *m_front, *m_rear);
 
-		frc::Encoder m_leftEncoder{Encoder_L1, Encoder_L2};
-		frc::Encoder m_rightEncoder{Encoder_R1, Encoder_R2};
+		frc::Encoder m_leftEncoder{Map_DIO_Encoder_L1, Map_DIO_Encoder_L2};
+		frc::Encoder m_rightEncoder{Map_DIO_Encoder_R1, Map_DIO_Encoder_R2};
 
 		// It's desirable that everything possible under private except
 		// for methods that implement subsystem capabilities

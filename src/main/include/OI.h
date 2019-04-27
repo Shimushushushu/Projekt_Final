@@ -20,9 +20,9 @@ class OI {
 		frc::Joystick& GetX();
 	
 	private:
-		frc::Joystick m_Xtreme_L{XtremeL};
-		frc::Joystick m_Xtreme_R{XtremeR};
-		frc::Joystick m_Xbox{Xbox};
+		frc::Joystick m_Xtreme_L{Map_Joy_XtremeL};
+		frc::Joystick m_Xtreme_R{Map_Joy_XtremeR};
+		frc::Joystick m_Map_Joy_Xbox{Map_Joy_Xbox};
 
-  		frc::JoystickButton m_example{&m_Xbox, 1};
+  		frc::JoystickButton m_example{&m_Map_Joy_Xbox, 1};
 };

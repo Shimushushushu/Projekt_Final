@@ -8,33 +8,33 @@
 #pragma once
 
 // CAN Wiring
-constexpr int frontLeftMap = 1;
-constexpr int rearLeftMap = 2;
-constexpr int frontRightMap = 3;
-constexpr int rearRightMap = 4;
-constexpr int frontMap = 5;
-constexpr int rearMap = 6;
+constexpr int Map_CAN_Motor_FL = 1;
+constexpr int Map_CAN_Motor_RL = 2;
+constexpr int Map_CAN_Motor_FR = 3;
+constexpr int Map_CAN_Motor_RR = 4;
+constexpr int Map_CAN_Motor_F = 5;
+constexpr int Map_CAN_Motor_R = 6;
 
 //DIO Wiring
-constexpr int Encoder_L1 = 1;
-constexpr int Encoder_L2 = 2;
-constexpr int Encoder_R1 = 3;
-constexpr int Encoder_R2 = 4;
+constexpr int Map_DIO_Encoder_L1 = 1;
+constexpr int Map_DIO_Encoder_L2 = 2;
+constexpr int Map_DIO_Encoder_R1 = 3;
+constexpr int Map_DIO_Encoder_R2 = 4;
 
 //Joy Wiring
-constexpr int XtremeL = 1;
-constexpr int XtremeR = 2;
-constexpr int Xbox = 0;
+constexpr int Map_Joy_XtremeL = 1;
+constexpr int Map_Joy_XtremeR = 2;
+constexpr int Map_Joy_Xbox = 0;
 
 //PDP wiring
-constexpr int CIM_LF = 1;
-constexpr int CIM_LR = 2;
-constexpr int CIM_RF = 3;
-constexpr int CIM_RR = 4;
-constexpr int Pro775_F1 = 5;
-constexpr int Pro775_F2 = 6;
-constexpr int Pro775_R1 = 7;
-constexpr int Pro775_R2 = 8;
+constexpr int Map_PDP_CIM_LF = 1;
+constexpr int Map_PDP_CIM_LR = 2;
+constexpr int Map_PDP_CIM_RF = 3;
+constexpr int Map_PDP_CIM_RR = 4;
+constexpr int Map_PDP_775_F1 = 5;
+constexpr int Map_PDP_775_F2 = 6;
+constexpr int Map_PDP_775_R1 = 7;
+constexpr int Map_PDP_775_R2 = 8;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
